@@ -2,14 +2,13 @@ package com.edson.proposta_app.controller;
 
 import com.edson.proposta_app.dto.PropostaRequestDto;
 import com.edson.proposta_app.dto.PropostaResponseDto;
+import com.edson.proposta_app.mapper.PropostaMapper;
 import com.edson.proposta_app.service.PropostaService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -26,6 +25,11 @@ public class PropostaController {
                         .buildAndExpand(response.getId())
                         .toUri())
                         .body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PropostaResponseDto>> obterProposta(){
+        return ResponseEntity.ok(propostaService.obterProposta());
     }
 
 }
