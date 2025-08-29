@@ -6,13 +6,14 @@ import com.edson.proposta_app.entity.Proposta;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
 @Mapper
 public interface PropostaMapper {
+
 
     PropostaMapper INSTANCE = Mappers.getMapper(PropostaMapper.class);
 
@@ -38,6 +39,6 @@ public interface PropostaMapper {
     List<PropostaResponseDto> convertListEntityToListDto(Iterable<Proposta> propostas);
 
     default String setValorSolicitadoFmt(Proposta proposta){
-        return NumberFormat.getCurrencyInstance(new Locale("pt","BR")).format(proposta.getValorSolicitado());
+       return NumberFormat.getCurrencyInstance(new Locale("pt","BR")).format(proposta.getValorSolicitado());
     }
 }
