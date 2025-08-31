@@ -18,7 +18,7 @@ public interface PropostaMapper {
     PropostaMapper INSTANCE = Mappers.getMapper(PropostaMapper.class);
 
     @Mapping(target = "aprovada", ignore = true)
-    @Mapping(target = "integrada", ignore = true)
+    @Mapping(target = "integrada", constant = "true")
     @Mapping(target = "observacao", ignore = true)
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "usuario.nome", source = "nome")
